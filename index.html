@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hinan Mohamed — Cybersecurity Professional</title>
+  <meta name="description" content="Hinan Mohamed — CEH-certified cybersecurity professional, penetration tester, and bug bounty hunter based in Kerala, India."/>
+  <meta name="keywords" content="Hinan Mohamed, cybersecurity, bug bounty, penetration tester, CEH, Kerala, ethical hacker"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --bg2:       #131920;
+      --bg3:       #1a2330;
+      --fg:        #e2eaf4;
+      --muted:     #5a7490;
+      --subtle:    #8faabf;
+      --cyan:      #22d3ee;
+      --cyan-dim:  #0e7490;
+      --cyan-glow: rgba(34,211,238,0.12);
+      --border:    #1e2d3d;
+      --border2:   #243447;
+      --tag-bg:    #162030;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Background grid texture ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Cyan top glow ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -160px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 320px;
+      background: radial-gradient(ellipse, rgba(34,211,238,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Nav ── */
+    nav {
+      padding: 32px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .nav-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 60px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.15s ease forwards;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(38px, 6vw, 56px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 8px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--cyan);
+      opacity: 0.8;
+    }
+
+    .hero-bio {
+      margin-top: 26px;
+      max-width: 520px;
+      color: var(--subtle);
+      font-size: 15.5px;
+      line-height: 1.8;
+    }
+
+    .hero-links {
+      margin-top: 36px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: all 0.22s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #0a0f14;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #38e8ff;
+      box-shadow: 0 0 18px rgba(34,211,238,0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--subtle);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--cyan-dim);
+      color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan-dim);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .skill-group h3 {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--subtle);
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--border);
+      transition: all 0.18s;
+    }
+
+    .tag:hover {
+      border-color: var(--cyan-dim);
+      color: var(--cyan);
+    }
+
+    .tag.cert {
+      background: var(--cyan-glow);
+      color: var(--cyan);
+      border-color: var(--cyan-dim);
+      font-weight: 500;
+    }
+
+    /* ── Bug Bounty ── */
+    .findings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .finding-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 18px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finding-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: transparent;
+      transition: background 0.22s;
+    }
+
+    .finding-item:hover {
+      border-color: var(--border2);
+      background: var(--bg3);
+    }
+
+    .finding-item:hover::before {
+      background: var(--cyan);
+    }
+
+    .finding-severity {
+      font-family: 'DM Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+      margin-top: 3px;
+      border: 1px solid;
+    }
+
+    .sev-p1 { background: rgba(220,38,38,0.12); color: #f87171; border-color: rgba(220,38,38,0.3); }
+    .sev-p2 { background: rgba(234,88,12,0.12); color: #fb923c; border-color: rgba(234,88,12,0.3); }
+    .sev-p3 { background: rgba(202,138,4,0.12);  color: #facc15; border-color: rgba(202,138,4,0.3); }
+
+    .finding-info h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 13.5px;
+      color: var(--fg);
+      margin-bottom: 4px;
+    }
+
+    .finding-info p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── Writing / Links ── */
+    .link-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: all 0.22s;
+    }
+
+    .link-card:hover {
+      border-color: var(--cyan-dim);
+      background: var(--bg3);
+      transform: translateX(4px);
+      box-shadow: -4px 0 0 var(--cyan);
+    }
+
+    .link-card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .link-card-info strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--fg);
+    }
+
+    .link-card-info span {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    .link-arrow {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .link-card:hover .link-arrow {
+      color: var(--cyan);
+      transform: translateX(3px);
+    }
+
+    /* ── Contact ── */
+    .contact-note {
+      color: var(--subtle);
+      font-size: 15px;
+      max-width: 480px;
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 36px 0 52px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 10.5px;
+      color: var(--border2);
+    }
+
+    /* ── Cursor glow that follows mouse ── */
+    .cursor-glow {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,211,238,0.055) 0%, transparent 65%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: left 0.18s ease, top 0.18s ease;
+      z-index: 0;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    section:nth-child(1) { animation-delay: 0.20s; }
+    section:nth-child(2) { animation-delay: 0.30s; }
+    section:nth-child(3) { animation-delay: 0.40s; }
+    section:nth-child(4) { animation-delay: 0.50s; }
+    section:nth-child(5) { animation-delay: 0.58s; }
+    footer { animation-delay: 0.65s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .skills-grid { grid-template-columns: 1fr; gap: 22px; }
+      .exp-item { grid-template-columns: 1fr; gap: 4px; }
+      .footer-inner { flex-direction: column; gap: 8px; align-items: flex-start; }
+      nav { flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="container">
+
+  <!-- Nav -->
+  <nav>
+    <span class="nav-name">hinan mohamed</span>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#bounty">Bounty</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">Cybersecurity Professional · Kerala, India</p>
+    <h1>Hinan Mohamed<br><em>finds what others miss.</em></h1>
+    <p class="hero-bio">
+      CEH-certified security consultant specializing in penetration testing, vulnerability 
+      assessment, and offensive security research. I help organizations identify and close 
+      critical security gaps — before adversaries find them first.
+    </p>
+    <div class="hero-links">
+      <a href="https://linkedin.com/in/hinanmohamed" target="_blank" class="btn btn-primary">
+        ↗ LinkedIn
+      </a>
+      <a href="https://github.com/hinanmohamed" target="_blank" class="btn btn-outline">
+        GitHub
+      </a>
+      <a href="https://medium.com/@hinanmohamed" target="_blank" class="btn btn-outline">
+        Medium
+      </a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Skills & Certifications -->
+  <section id="skills">
+    <p class="section-label">Skills & Certifications</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Certifications</h3>
+        <div class="tags">
+          <span class="tag cert">CEH</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Offensive Security</h3>
+        <div class="tags">
+          <span class="tag">Burp Suite</span>
+          <span class="tag">Nuclei</span>
+          <span class="tag">nmap</span>
+          <span class="tag">IDOR</span>
+          <span class="tag">CORS</span>
+          <span class="tag">Open Redirect</span>
+          <span class="tag">JWT Analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Recon & Tools</h3>
+        <div class="tags">
+          <span class="tag">subfinder</span>
+          <span class="tag">amass</span>
+          <span class="tag">httpx</span>
+          <span class="tag">subjack</span>
+          <span class="tag">curl</span>
+          <span class="tag">Kali Linux</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>SOC & Monitoring</h3>
+        <div class="tags">
+          <span class="tag">Splunk</span>
+          <span class="tag">Wazuh</span>
+          <span class="tag">Wireshark</span>
+          <span class="tag">Snort</span>
+          <span class="tag">SIEM</span>
+          <span class="tag">Log Analysis</span>
+          <span class="tag">Threat Detection</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Domains</h3>
+        <div class="tags">
+          <span class="tag">Web App Security</span>
+          <span class="tag">API Security</span>
+          <span class="tag">Bug Bounty</span>
+          <span class="tag">Pen Testing</span>
+          <span class="tag">Incident Response</span>
+          <span class="tag">Threat Intelligence</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bug Bounty Findings -->
+  <section id="bounty">
+    <p class="section-label">Bug Bounty Findings</p>
+    <div class="findings-list">
+
+      <div class="finding-item">
+        <span class="finding-severity sev-p1">P1</span>
+        <div class="finding-info">
+          <h4>Hardcoded Production Credentials in Public JS File</h4>
+          <p>Network Solutions — Exposed API keys and production credentials in a publicly accessible AEM JavaScript file.</p>
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <span class="finding-severity sev-p2">P2</span>
+        <div class="finding-info">
+          <h4>CORS Misconfiguration with Credentialed Requests</h4>
+          <p>Todoist — Subdomain wildcard trust allowing credentialed cross-origin requests, enabling potential account takeover.</p>
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <span class="finding-severity sev-p2">P2</span>
+        <div class="finding-info">
+          <h4>IDOR on Profile Update Endpoint</h4>
+          <p>Todoist — Insecure Direct Object Reference allowing unauthorized modification of user profile data via token leakage.</p>
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <span class="finding-severity sev-p3">P3</span>
+        <div class="finding-info">
+          <h4>Dangling CNAME Exposing Internal AWS Infrastructure</h4>
+          <p>Conductor — Misconfigured DNS record revealing internal AWS infrastructure details through subdomain takeover vector.</p>
+        </div>
+      </div>
+
+      <div class="finding-item">
+        <span class="finding-severity sev-p3">P3</span>
+        <div class="finding-info">
+          <h4>PayPal Invoice PII Exposure via Google-Indexed Links</h4>
+          <p>PayPal — Personally identifiable information accessible via skipAuth invoice links indexed by Google search.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- Writing & Links -->
+  <section id="writing">
+    <p class="section-label">Writing & Profiles</p>
+    <div class="link-grid">
+
+      <a href="https://medium.com/@hinanmohamed" target="_blank" class="link-card">
+        <div class="link-card-left">
+          <div class="link-icon">✍️</div>
+          <div class="link-card-info">
+            <strong>Medium</strong>
+            <span>Bug bounty writeups & security research</span>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="https://linkedin.com/in/hinanmohamed" target="_blank" class="link-card">
+        <div class="link-card-left">
+          <div class="link-icon">💼</div>
+          <div class="link-card-info">
+            <strong>LinkedIn</strong>
+            <span>Professional profile & experience</span>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="https://github.com/hinanmohamed" target="_blank" class="link-card">
+        <div class="link-card-left">
+          <div class="link-icon">🐙</div>
+          <div class="link-card-info">
+            <strong>GitHub</strong>
+            <span>Security tools, scripts & projects</span>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+      <a href="https://twitter.com/hinanmohamed" target="_blank" class="link-card">
+        <div class="link-card-left">
+          <div class="link-icon">𝕏</div>
+          <div class="link-card-info">
+            <strong>Twitter / X</strong>
+            <span>Security insights & community</span>
+          </div>
+        </div>
+        <span class="link-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <p class="contact-note">
+      Available for security consulting engagements, penetration testing contracts, 
+      bug bounty collaborations, and advisory roles. Based in Kerala, India — 
+      working with clients globally, remotely.
+    </p>
+    <a href="/cdn-cgi/l/email-protection#9df5f4f3fcf3ddf8e5fcf0edf1f8b3fef2f0" class="btn btn-primary">✉ Get in touch</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-name">Hinan Mohamed</span>
+      <span class="footer-copy">© 2026 · Kerala, India</span>
+    </div>
+  </footer>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const glow = document.getElementById('cursorGlow');
+  document.a
